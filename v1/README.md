@@ -4,10 +4,8 @@ Based on:
 - https://davi.sh/til/nix/nix-macos-setup
 - https://github.com/thexyno/nixos-config
 - https://github.com/ryantm/dotfiles
-- https://github.com/Zabot/nixconfig
 - https://github.com/notusknot/dotfiles-nix
 - https://github.com/fmoda3/nix-configs
-- https://github.com/lhchavez/dotfiles
 
 Resources:
 - https://github.com/lnl7/nix-darwin
@@ -16,21 +14,16 @@ Resources:
 - https://fasterthanli.me/series/building-a-rust-service-with-nix
 
 
-Install
-```sh
-# nix-darwin
-nix run nix-darwin -- switch --flake .#tom-m1
+## `nix-darwin`
 
-# home-manager
-nix run home-manager -- switch --flake .#tom-vm
+https://github.com/LnL7/nix-darwin
+
+Install nix-darwin:
+```sh
+nix run nix-darwin -- switch --flake ~/dotfiles/nix
 ```
 
-
-Rebuild
+Use nix-darwin:
 ```sh
-# nix-darwin
-darwin-rebuild switch --flake .#tom-m1
-
-# home-manager
-home-manager switch --flake .#tom-vm
+darwin-rebuild switch --flake ~/dotfiles/nix
 ```

@@ -10,6 +10,11 @@ in
     # ./homebrew
   ];
 
+  options.my-darwin = {
+    isWork = lib.mkEnableOption "work profile";
+    enableSudoTouch = lib.mkEnableOption "sudo touch id";
+  };
+
   config = {
     # Make sure nix always runs in multi-user mode on Mac
     services.nix-daemon.enable = true;
