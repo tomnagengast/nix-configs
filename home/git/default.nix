@@ -1,6 +1,11 @@
 { config, pkgs, ... }: {
-    programs = {
-      git = {
+
+  xdg.configFile."1Password/ssh/agent.toml" = {
+    source = ./agent.toml;
+  };
+
+  programs = {
+    git = {
       enable = true;
       userEmail = "tnagengast@gmail.com";
       userName = "tomnagengast";
