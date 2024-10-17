@@ -5,12 +5,9 @@ let
 in
 {
   imports = [
-    ./bat
-    ./direnv
-    ./fzf
     ./git
-    ./tmux
     ./zsh
+    ./neovim
   ];
   
   options.props = {
@@ -18,6 +15,13 @@ in
   };
 
   config = {
+    xdg.configFile = {
+      "dbt/profiles.yml".source = ./dbt/profiles.yml;
+      "tmux/tmux.conf".source = ./tmux/tmux.conf;
+      "zsh/aliases.zsh".source = ./zsh/aliases.zsh;
+      "zsh/functions.zsh".source = ./zsh/functions.zsh;
+    };
+
     home = {
       stateVersion = "24.11";
 
@@ -40,16 +44,46 @@ in
       sessionVariables = {
         EDITOR = "cursor";
         DBT_STATE = "target/production";
+        DBT_PROFILES_DIR = ".config/dbt";
         DBT_DEFER = "true";
         DBT_CLOUD_ACCOUNT_ID = "211006";
         DBT_CLOUD_PROJECT_ID = "304574";
       };
 
       sessionPath = [
-        "$HOME/bin"
+          "$HOME/bin"
       ];
+
+      file = {
+        "bin" = {
+          source = ./scripts;
+          recursive = true;
+        };
+      };
     };
 
-    programs.home-manager.enable = true;
+    programs = {
+      home-manager.enable = true;
+
+      bat = {
+        enable = true;
+        config.theme = "Nord";
+      };
+
+      direnv = {
+        enable = true;
+        enableZshIntegration = true;
+        nix-direnv.enable = true;
+      };
+
+      fzf = {
+        enable = true;
+        enableZshIntegration = true;
+      };
+        
+      tmux = {
+        enable = true;
+      };
+    };
   };
 }
