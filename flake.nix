@@ -19,13 +19,13 @@
     };
 
     # Other sources
-    # systems.url = "github:nix-systems/default";
+    systems.url = "github:nix-systems/default";
     flake-parts.url = "github:hercules-ci/flake-parts";
     # flake-root.url = "github:srid/flake-root";
-    # flake-utils = {
-    #   url = "github:numtide/flake-utils";
-    #   inputs.systems.follows = "systems";
-    # };
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.systems.follows = "systems";
+    };
     # flake-compat = {
     #   url = "github:edolstra/flake-compat";
     #   flake = false;
@@ -37,7 +37,9 @@
     nixpkgs,
     home-manager,
     darwin,
+    systems,
     flake-parts,
+    flake-utils,
     ...
   }: 
   let
