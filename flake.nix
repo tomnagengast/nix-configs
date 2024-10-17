@@ -11,9 +11,9 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, darwin, ...}: let
-    initModules = { host, user }: [
-      # Main config
+  outputs = inputs @ { self, nixpkgs, home-manager, darwin, ...}: 
+  let 
+    initModules = { host, user }: with inputs; [
       (./. + "/hosts/${host}/configuration.nix")
       home-manager.${if host == "m1" then "darwinModules" else "nixosModules"}.home-manager
       {
@@ -28,28 +28,21 @@
       name = "Tom Nagengast";
       email = "tnagengast@gmail.com";
     };
+    
   in {
     darwinConfigurations.tom-m1 = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
-      modules = initModules { host = "m1"; user = user; };
+      modules = initModules { inherit user; host = "m1"; };
       specialArgs = {
-        inherit home-manager;
-        global = {
-          inherit user;
-          host = "m1";
-        };
+        inherit home-manager user;
       };
     };
 
     homeConfigurations.tom-vm = home-manager.lib.homeManagerConfiguration {
       system = "x86_64-linux";
-      modules = initModules { host = "vm"; user = user; };
+      modules = initModules { inherit user; host = "vm"; };
       specialArgs = {
-        inherit home-manager;
-        global = {
-          inherit user;
-          host = "vm";
-        };
+        inherit home-manager user;
       };
     };
   };

@@ -1,0 +1,71 @@
+replit:
+  target: "{{ env_var('DBT_TARGET', 'dev') }}"
+  outputs:
+    dev:
+      type: bigquery
+      project: replit-analytics-dev
+      dataset: "{{ env_var('TARGET_SCHEMA', 'dev_tom') }}"
+      location: US
+      threads: 25
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      method: oauth
+      # method: service-account
+      # keyfile: /Users/tomnagengast/.config/gcloud/data-platform-staging@replit-analytics.iam.gserviceaccount.com.json
+    staging:
+      type: bigquery
+      project: replit-analytics-dev
+      dataset: "{{ env_var('TARGET_SCHEMA', 'PR_305_DEV') }}"
+      location: US
+      threads: 25
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      method: oauth
+      # method: service-account
+      # keyfile: /Users/tomnagengast/.config/gcloud/data-platform-staging@replit-analytics.iam.gserviceaccount.com.json
+    production:
+      type: bigquery
+      project: replit-analytics
+      execution_project: replit-analytics
+      dataset: core_data_deps
+      location: US
+      threads: 25
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      method: oauth
+
+cortex:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      project: replit-analytics-dev
+      dataset: "{{ env_var('TARGET_SCHEMA', 'dev_tom') }}"
+      location: US
+      threads: 25
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      method: oauth
+      # method: service-account
+      # keyfile: /Users/tomnagengast/.config/gcloud/data-platform-staging@replit-analytics.iam.gserviceaccount.com.json
+    staging:
+      type: bigquery
+      project: replit-analytics-dev
+      dataset: "{{ env_var('TARGET_SCHEMA', 'PR_119') }}"
+      location: US
+      threads: 25
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      method: oauth
+      # method: service-account
+      # keyfile: /Users/tomnagengast/.config/gcloud/data-platform-staging@replit-analytics.iam.gserviceaccount.com.json
+    production:
+      type: bigquery
+      project: replit-analytics
+      execution_project: replit-analytics
+      dataset: core_data_deps
+      location: US
+      threads: 25
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      method: oauth

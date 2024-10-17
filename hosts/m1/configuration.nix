@@ -1,4 +1,4 @@
-{ pkgs, global, ... }: {
+{ pkgs, user, ... }: {
 
   programs.zsh.enable = true;
   environment.pathsToLink = ["/share/zsh"];
@@ -20,8 +20,8 @@
 
   system.stateVersion = 5;
 
-  users.users.${global.user.unixname} = {
-    name = global.user.unixname;
-    home = "/Users/${global.user.unixname}";
+  users.users.${user.unixname} = {
+    name = user.unixname;
+    home = "/Users/${user.unixname}";
   };
 }
