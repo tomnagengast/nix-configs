@@ -1,10 +1,4 @@
 { config, pkgs, ... }: {
-
-  xdg.configFile = {
-    "zsh/aliases.zsh".source = ./aliases.zsh;
-    "zsh/functions.zsh".source = ./functions.zsh;
-  };
-
   programs = {
     zsh = {
       enable = true;
@@ -29,10 +23,10 @@
         prompt pure
 
         source ~/.orbstack/shell/init.zsh 2>/dev/null || :
-        # source ~/.aliases.zsh
-        # source ~/.functions.zsh
+        ${builtins.readFile ./aliases.zsh}
+        ${builtins.readFile ./functions.zsh}
+        source ~/.zshenv
       '';
-      envExtra = "source ${config.home.homeDirectory}/nix-configs/home/zsh/zshenv.zsh";
     };
   };
 }

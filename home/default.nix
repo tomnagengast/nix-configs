@@ -6,8 +6,8 @@ in
 {
   imports = [
     ./git
-    ./zsh
     ./neovim
+    ./zsh
   ];
   
   options.props = {
@@ -18,8 +18,6 @@ in
     xdg.configFile = {
       "dbt/profiles.yml".source = ./dbt/profiles.yml;
       "tmux/tmux.conf".source = ./tmux/tmux.conf;
-      "zsh/aliases.zsh".source = ./zsh/aliases.zsh;
-      "zsh/functions.zsh".source = ./zsh/functions.zsh;
     };
 
     home = {
@@ -35,7 +33,6 @@ in
         gnupg
         jq
         lsd
-        neovim
         pure-prompt
         tmux
         tree
