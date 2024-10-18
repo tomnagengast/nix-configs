@@ -21,7 +21,7 @@
       plugins = with pkgs.vimPlugins; [
         {
           plugin = treesitter;
-          config = toLuaFile ./lua/user/plugins/treesitter.lua;
+          config = toLuaFile ./lua/plugins/treesitter.lua;
         }
       ];  
     };
