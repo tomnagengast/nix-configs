@@ -33,7 +33,8 @@ in
         gnupg
         jq
         lsd
-        pure-prompt
+        # pure-prompt
+        ripgrep
         tmux
         tree
       ];
@@ -76,6 +77,21 @@ in
       fzf = {
         enable = true;
         enableZshIntegration = true;
+      };
+
+      starship = {
+        enable = true;
+        settings = {
+          character = {
+            success_symbol = "[➜](bold green)";
+            error_symbol = "[➜](bold red)";
+          };
+          aws.disabled = true;
+          docker_context.disabled = true;
+          gcloud.disabled = true;
+          python.disabled = true;
+          package.disabled = true;
+        };
       };
         
       tmux = {

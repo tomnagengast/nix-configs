@@ -3,7 +3,7 @@
 set -e # fail on error
 set -o pipefail # fail on pipefail
 set -u # fail on unset variables
-set -x # echo on
+# set -x # echo on
 
 action=${1:-build}
 host_arch=$(uname -m)

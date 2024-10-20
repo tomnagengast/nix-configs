@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     -- Color scheme
-    { import = 'user.plugins.rose-pine' },
+    { import = 'plugins.rose-pine' },
 
     -- Useful commands like :Rename and :SudoWrite
     { 'tpope/vim-eunuch' },
@@ -47,45 +47,45 @@ require("lazy").setup({
     { 'karb94/neoscroll.nvim', config = true },
 
     -- Cursor for vim
-    { import = 'user.plugins.avante' },
+    { import = 'plugins.avante' },
 
     -- Show file and LSP context in a bar at the top of the screen
-    { import = 'user.plugins.barbecue' },
+    { import = 'plugins.barbecue' },
 
     -- Colorize Hex Codes
-    { import = 'user.plugins.colorizer' },
+    { import = 'plugins.colorizer' },
 
     -- GitHub Copilot
-    { import = 'user.plugins.copilot' },
+    { import = 'plugins.copilot' },
 
     -- Quick file navigation
-    { import = 'user.plugins.harpoon' },
+    { import = 'plugins.harpoon' },
 
     -- LSP support
-    { import = 'user.plugins.lsp-zero' },
+    { import = 'plugins.lsp-zero' },
 
     -- A Status line.
-    { import = 'user.plugins.lualine' },
+    { import = 'plugins.lualine' },
 
     -- Fuzzy finder
-    { import = 'user.plugins.telescope' },
+    { import = 'plugins.telescope' },
 
     -- Improved syntax highlighting
-    { import = 'user.plugins.treesitter' },
+    { import = 'plugins.treesitter' },
 
     -- Split arrays and methods onto multiple lines, or join them back up
-    { import = 'user.plugins.treesj' },
+    { import = 'plugins.treesj' },
 
     -- Commenting support
-    { import = 'user.plugins.vim-commentary' },
+    { import = 'plugins.vim-commentary' },
 
     -- Automatically fix indentation when pasting code
-    { import = 'user.plugins.vim-pasta' },
+    { import = 'plugins.vim-pasta' },
 
     -- Automatically set the working directory to the project root
-    { import = 'user.plugins.vim-rooter' },
+    { import = 'plugins.vim-rooter' },
     
-    { import = 'user.plugins.which-key' },
+    { import = 'plugins.which-key' },
 
 }, {
     checker = {
@@ -99,4 +99,3 @@ require("lazy").setup({
         colorscheme = { "rose-pine" },
     },
 })
-
