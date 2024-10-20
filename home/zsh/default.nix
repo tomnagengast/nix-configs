@@ -5,13 +5,20 @@
       autosuggestion.enable = true;
       enableCompletion = true;
       history.ignoreDups = true;
-      history.ignorePatterns = ["ls"];
+      history.ignorePatterns = [
+        "h"
+        "l *"
+        "ll *"
+        "ls *"
+        "cd *"
+        "gr"
+        "pwd"
+      ];
       oh-my-zsh = {
         enable = true;
         plugins = ["git" "direnv"];
       };
       initExtra = ''
-        source ~/.orbstack/shell/init.zsh
         ${builtins.readFile ./aliases.zsh}
         ${builtins.readFile ./functions.zsh}
         source ~/.zshenv

@@ -1,86 +1,66 @@
-{ config, pkgs, ... }: {
+{ config, lib, pkgs, ... }:
 
-  # xdg.configFile."nvim" = {
-  #   source = ./lua;
-  #   recursive = true;
-  # };
+{
+  programs.neovim = {
+    enable = true;
+    # package = pkgs.neovim-nightly;
+    vimAlias = true;
+    vimdiffAlias = true;
+    withNodeJs = true;
 
-  programs = {
-    neovim = let
-      toLua = str: "lua << EOF\n${str}\nEOF";
-      toLuaFile = file: toLua (builtins.readFile file);
-    in 
-    {
-      enable = true;
-      viAlias = true;
-      vimAlias = true;
-      vimdiffAlias = true;
-        
-      extraConfig = ''
-        ${toLuaFile ./lua/globals.lua}
-        ${toLuaFile ./lua/options.lua}
-        ${toLuaFile ./lua/keymaps.lua}
-        
-        colorscheme rose-pine
-          
+    extraPackages = with pkgs; [
+      # LazyVim
+      lua-language-server
+      stylua
+      # Telescope
+      ripgrep
+    ];
+
+    plugins = with pkgs.vimPlugins; [
+      lazy-nvim
+    ];
+
+    extraLuaConfig =
+      let
+        plugins = with pkgs.vimPlugins; [
+          lazy-nvim
+          lualine-nvim
+          nvim-treesitter
+          nvim-treesitter-context
+          nvim-treesitter-textobjects
+          plenary-nvim
+          telescope-fzf-native-nvim
+          telescope-nvim
+          which-key-nvim
+        ];
+        mkEntryFromDrv = drv:
+          if lib.isDerivation drv then
+            { name = "${lib.getName drv}"; path = drv; }
+          else
+            drv;
+        lazyPath = pkgs.linkFarm "lazy-plugins" (builtins.map mkEntryFromDrv plugins);
+      in
+      ''
+        ${builtins.readFile ./lua/globals.lua}
+        ${builtins.readFile ./lua/options.lua}
+        ${builtins.readFile ./lua/keymaps.lua}
+        ${builtins.readFile ./lua/lazy.lua}
       '';
-      # ${toLuaFile ./lua/plugins.lua}     
-
-      # ${toLuaFile ./lua/plugins/rose-pine.lua}   
-
-      # ${toLuaFile ./lua/plugins/barbecue.lua}
-      # ${toLuaFile ./lua/plugins/colorizer.lua}
-      # ${toLuaFile ./lua/plugins/harpoon.lua}
-      # ${toLuaFile ./lua/plugins/lsp-zero.lua}
-      # ${toLuaFile ./lua/plugins/lualine.lua}
-      # ${toLuaFile ./lua/plugins/telescope.lua}
-      # ${toLuaFile ./lua/plugins/treesitter.lua}
-      # ${toLuaFile ./lua/plugins/treesj.lua}
-      # ${toLuaFile ./lua/plugins/vim-commentary.lua}
-      # ${toLuaFile ./lua/plugins/vim-pasta.lua}
-      # ${toLuaFile ./lua/plugins/vim-rooter.lua}
-      # ${toLuaFile ./lua/plugins/which-key.lua}
-
-      plugins = with pkgs.vimPlugins; [
-      #   # vim-heritage
-      #   barbecue-nvim
-      #   harpoon
-      #   lsp-zero-nvim
-      #   lualine-nvim
-      #   neoscroll-nvim
-      #   nvim-autopairs
-      #   nvim-colorizer-lua
-      #   nvim-treesitter
-      #   nvim-treesitter-textobjects
-      #   (nvim-treesitter.withAllGrammars)
-      #   nvim-ts-context-commentstring
-      #   nvim-web-devicons
-      #   playground
-      #   plenary-nvim
-        rose-pine
-      #   telescope-fzf-native-nvim
-      #   telescope-live-grep-args-nvim
-        plenary-nvim
-        nvim-web-devicons
-        telescope-fzf-native-nvim
-        telescope-live-grep-args-nvim
-        {
-          plugin = telescope-nvim;
-          type = "lua";
-          config = builtins.readFile ./lua/plugins/telescope.lua;
-        }
-
-      #   vim-commentary
-      #   vim-eunuch
-      #   vim-lastplace
-      #   vim-pasta
-      #   vim-repeat
-      #   vim-rooter
-      #   vim-sleuth
-      #   vim-surround
-      #   vim-tmux-navigator
-      #   which-key-nvim
-      ];
-    };
   };
+
+  # https://github.com/nvim-treesitter/nvim-treesitter#i-get-query-error-invalid-node-type-at-position
+  xdg.configFile."nvim/parser".source =
+    let
+      parsers = pkgs.symlinkJoin {
+        name = "treesitter-parsers";
+        paths = (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: with plugins; [
+          c
+          lua
+        ])).dependencies;
+      };
+    in
+    "${parsers}/parser";
+
+  # Normal LazyVim config here, see https://github.com/LazyVim/starter/tree/main/lua
+  xdg.configFile."nvim/lua".source = ./lua;
 }

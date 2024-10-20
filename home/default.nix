@@ -33,7 +33,7 @@ in
         gnupg
         jq
         lsd
-        # pure-prompt
+        git-recent
         ripgrep
         tmux
         tree

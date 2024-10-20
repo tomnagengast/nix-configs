@@ -71,9 +71,6 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 -- vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true }) 
 
 -- Dev stuff
--- open packer.lua
--- vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/.config/nvim/lua/tomnagengast/packer.lua<CR>"); 
-
 -- vim.keymap.set("n", "<leader><leader>r", function()
 --     -- print("reloading config")
 --     R('data-tools')
@@ -81,15 +78,12 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 --     vim.cmd("DTSelectStatement")
 -- end)
 
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = 'Telescope find files' })
-vim.keymap.set('n', '<leader>F', builtin.find_files, { desc = 'All Files', no_ignore = true })
-vim.keymap.set('n', '<leader>g', builtin.live_grep_args, { desc = 'Telescope live grep' })
-vim.keymap.set('n', '<leader>b', builtin.buffers, { desc = 'Telescope buffers' })
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
--- vim.keymap.set('n', '<leader>h', builtin.oldfiles, {})
--- vim.keymap.set('n', '<leader>s', builtin.lsp_document_symbols, {})
--- vim.keymap.set('n', '<leader>f', builtin.find_files, {})
--- vim.keymap.set('n', '<leader>F', builtin.find_files, { no_ignore = true, prompt_title = 'All Files' })
--- vim.keymap.set('n', '<leader>g', builtin.live_grep_args, {})
+-- Telescope
+-- local builtin = require('telescope.builtin')
+-- vim.keymap.set('n', '<leader>f', builtin.find_files)
+-- vim.keymap.set('n', '<leader>F', function()
+--     builtin.find_files({ hidden = true, no_ignore = true, prompt_title = 'All Files' })
+-- end)
+-- vim.keymap.set('n', '<leader>g', builtin.live_grep_args, { desc = 'Telescope live grep' })
 -- vim.keymap.set('n', '<leader>b', builtin.buffers, {})
+-- vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
