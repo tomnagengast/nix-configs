@@ -1,9 +1,6 @@
-{ config, lib, pkgs, ... }:
-
-{
+{ config, lib, pkgs, ... }: {
   programs.neovim = {
     enable = true;
-    # package = pkgs.neovim-nightly;
     vimAlias = true;
     vimdiffAlias = true;
     withNodeJs = true;
@@ -18,6 +15,7 @@
 
     plugins = with pkgs.vimPlugins; [
       lazy-nvim
+      rose-pine
     ];
 
     extraLuaConfig =
@@ -29,6 +27,7 @@
           nvim-treesitter-context
           nvim-treesitter-textobjects
           plenary-nvim
+          rose-pine
           telescope-fzf-native-nvim
           telescope-nvim
           which-key-nvim
