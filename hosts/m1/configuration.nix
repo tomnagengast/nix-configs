@@ -91,8 +91,8 @@
       static-only = true;
       show-process-indicators = true;
       tilesize = 48;
-      wvous-tl-corner = 12; # Top left screen corner → Notification Center
-      wvous-tr-corner = 2; # Top right screen corner → Mission Control
+      wvous-tl-corner = 2; # Top left screen corner → Notification Center
+      wvous-tr-corner = 12; # Top right screen corner → Mission Control
       wvous-bl-corner = 3; # Bottom left screen corner → Application Windows
       wvous-br-corner = 4; # Bottom right screen corner → Desktop
     };

@@ -3,6 +3,7 @@
 Based on:
 - https://davi.sh/til/nix/nix-macos-setup
 - https://github.com/thexyno/nixos-config
+- https://github.com/cbrewster/nix-home
 - https://github.com/ryantm/dotfiles
 - https://github.com/Zabot/nixconfig
 - https://github.com/notusknot/dotfiles-nix
