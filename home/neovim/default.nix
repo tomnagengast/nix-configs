@@ -18,16 +18,27 @@
     extraLuaConfig =
       let
         plugins = with pkgs.vimPlugins; [
+          barbecue-nvim
+          harpoon
           lazy-nvim
+          lsp-zero-nvim
           lualine-nvim
-          nvim-treesitter
+          neoscroll-nvim
+          nvim-autopairs
+          nvim-colorizer-lua
+          nvim-treesitter.withAllGrammars
           nvim-treesitter-context
           nvim-treesitter-textobjects
+          nvim-ts-context-commentstring
+          nvim-web-devicons
+          playground
           plenary-nvim
           rose-pine
           telescope-fzf-native-nvim
+          # telescope-live-grep-args-nvim
           telescope-nvim
           which-key-nvim
+          # vim-heritage
         ];
         mkEntryFromDrv = drv:
           if lib.isDerivation drv then
