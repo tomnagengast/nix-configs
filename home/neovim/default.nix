@@ -51,7 +51,7 @@
         ${builtins.readFile ./lua/globals.lua}
         ${builtins.readFile ./lua/options.lua}
         ${builtins.readFile ./lua/keymaps.lua}
-        ${builtins.readFile ./lua/plugins.lua}
+        ${builtins.readFile ./lua/init.lua}
       '';
   };
 
