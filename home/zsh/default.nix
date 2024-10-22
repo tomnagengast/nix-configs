@@ -22,6 +22,7 @@
         ${builtins.readFile ./aliases.zsh}
         ${builtins.readFile ./functions.zsh}
         source ~/.zshenv
+        export DBT_PROFILES_DIR="$HOME/.config/dbt"
       '';
     };
   };

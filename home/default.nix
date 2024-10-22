@@ -41,11 +41,6 @@ in
 
       sessionVariables = {
         EDITOR = "nvim";
-        DBT_STATE = "target/production";
-        DBT_PROFILES_DIR = "$HOME/.config/dbt";
-        DBT_DEFER = "true";
-        DBT_CLOUD_ACCOUNT_ID = "211006";
-        DBT_CLOUD_PROJECT_ID = "304574";
       };
 
       sessionPath = [
