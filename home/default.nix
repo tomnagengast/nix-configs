@@ -30,10 +30,11 @@ in
         fzf
         gcc
         gh
+        git-recent
         gnupg
         jq
         lsd
-        git-recent
+        nil
         ripgrep
         tmux
         tree

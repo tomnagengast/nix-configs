@@ -92,7 +92,7 @@
         "/Users/${user.unixname}/Documents"
         "/Users/${user.unixname}/Downloads"
       ];
-      show-recents = true;
+      show-recents = false;
       static-only = false;
       show-process-indicators = false;
       tilesize = 64;
