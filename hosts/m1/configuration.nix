@@ -79,18 +79,23 @@
       expose-group-by-app = true;
       launchanim = false;
       mineffect = "scale";
-      minimize-to-application = true;
+      minimize-to-application = false;
       mru-spaces = false;
       persistent-apps = [
+        "/System/Applications/Notes.app"
+        "/Applications/1Password.app"
         "/Applications/Arc.app"
+        "/Applications/iTerm.app"
+        "/Applications/Cursor.app"
       ];
       persistent-others = [
-        "~/Downloads"
+        "/Users/${user.unixname}/Documents"
+        "/Users/${user.unixname}/Downloads"
       ];
-      show-recents = false;
-      static-only = true;
-      show-process-indicators = true;
-      tilesize = 48;
+      show-recents = true;
+      static-only = false;
+      show-process-indicators = false;
+      tilesize = 64;
       wvous-tl-corner = 2; # Top left screen corner → Notification Center
       wvous-tr-corner = 12; # Top right screen corner → Mission Control
       wvous-bl-corner = 3; # Bottom left screen corner → Application Windows
