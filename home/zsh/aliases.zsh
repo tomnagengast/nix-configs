@@ -8,9 +8,12 @@ alias ....="cd ../../.."
 alias reloaddns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
 alias l='ls -1A --group-directories-first'
 alias ll='ls -1Al --header --group-directories-first'
-alias s="subl"
-alias vim="nvim"
 alias h="history | tail -n 50"
+
+# Editors
+alias c="cursor ."
+alias s="subl ."
+alias v="nvim ."
 
 # dbt
 alias dl="uv run dbt ls -s state:modified --resource-type model"

@@ -9,12 +9,20 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, darwin, ...}: 
+  outputs = inputs @ { self, nixpkgs, home-manager, darwin, nix-homebrew, ...}: 
   let 
     initModules = { host, user }: with inputs; [
       (./. + "/hosts/${host}/configuration.nix")
+      nix-homebrew.darwinModules.nix-homebrew
+      {
+        nix-homebrew = {
+          enable = true;
+          user = user.unixname;
+        };
+      }
       home-manager.${if host == "m1" then "darwinModules" else "nixosModules"}.home-manager
       {
         nixpkgs.config.allowUnfree = true;

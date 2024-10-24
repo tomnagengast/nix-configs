@@ -5,6 +5,7 @@ let
 in
 {
   imports = [
+    ./brew
     ./git
     ./neovim
     ./zsh
