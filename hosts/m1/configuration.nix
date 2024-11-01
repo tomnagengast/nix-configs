@@ -1,6 +1,14 @@
 { pkgs, user, ... }: {
 
-  # homebrew.enable = true;
+  
+  homebrew = {
+    # enable = true;
+
+    brews = [
+      # "go" # install for system to use apple sdk frameworks unavailable to nixpkgs
+    ];
+  };
+
   programs.zsh.enable = true;
 
   programs.gnupg.agent = {

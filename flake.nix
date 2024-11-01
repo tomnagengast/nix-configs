@@ -12,14 +12,14 @@
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, darwin, nix-homebrew, ...}: 
+  outputs = { home-manager, darwin, nix-homebrew, ...}: 
   let 
-    initModules = { host, user }: with inputs; [
+    initModules = { host, user }: [
       (./. + "/hosts/${host}/configuration.nix")
       nix-homebrew.darwinModules.nix-homebrew
       {
         nix-homebrew = {
-          enable = true;
+          # enable = true;
           user = user.unixname;
         };
       }

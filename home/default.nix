@@ -1,11 +1,7 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, lib, ... }:
 with lib;
-let
-  cfg = config.props;
-in
 {
-  imports = [
-    ./brew
+  imports = [ 
     ./git
     ./neovim
     ./zsh
@@ -37,8 +33,12 @@ in
         lsd
         nil
         ripgrep
+        uv
         tmux
         tree
+        (google-cloud-sdk.withExtraComponents [
+          google-cloud-sdk.components.gke-gcloud-auth-plugin
+        ])
       ];
 
       sessionVariables = {

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ ... }: {
   programs = {
     zsh = {
       enable = true;
@@ -22,7 +22,15 @@
         ${builtins.readFile ./aliases.zsh}
         ${builtins.readFile ./functions.zsh}
         source ~/.zshenv
+        export PATH=/opt/homebrew/bin:$PATH
         export DBT_PROFILES_DIR="$HOME/.config/dbt"
+        export GOPATH=$HOME/go
+        export PATH=$PATH:$GOPATH/bin
+        
+        # Activate virtual environment if it exists
+        if [ -d .venv ]; then
+          source .venv/bin/activate
+        fi
       '';
     };
   };

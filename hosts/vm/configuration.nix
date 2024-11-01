@@ -1,4 +1,4 @@
-{ pkgs, global, ... }: {
+{ global, ... }: {
 
   programs.zsh.enable = true;
   environment.pathsToLink = ["/share/zsh"];
