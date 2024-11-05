@@ -32,6 +32,7 @@ with lib;
         jq
         lsd
         nil
+        nodejs
         ripgrep
         uv
         tmux
