@@ -92,7 +92,7 @@
       persistent-apps = [
         "/System/Applications/Notes.app"
         "/Applications/1Password.app"
-        "/Applications/Arc.app"
+        # "/Applications/Arc.app"
         "/Applications/iTerm.app"
         "/Applications/Cursor.app"
       ];

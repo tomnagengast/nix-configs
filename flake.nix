@@ -32,7 +32,7 @@
       }
     ];
     user = {
-      unixname = "tomnagengast";
+      unixname = "tom";
       name = "Tom Nagengast";
       email = "tnagengast@gmail.com";
     };

@@ -30,6 +30,7 @@ with lib;
         git-recent
         gnupg
         jq
+        k9s
         lsd
         nil
         nodejs
