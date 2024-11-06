@@ -24,6 +24,7 @@ with lib;
         _1password
         bat
         delta
+        duckdb
         fzf
         gcc
         gh

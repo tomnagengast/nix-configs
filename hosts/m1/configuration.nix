@@ -1,4 +1,12 @@
-{ pkgs, user, ... }: {
+{ pkgs, user, overlays, ... }: {
+
+  nixpkgs.overlays = overlays;
+
+  fonts = {
+    packages = with pkgs; [
+      sf-mono-liga-bin
+    ];
+  };
 
   
   homebrew = {

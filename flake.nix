@@ -10,10 +10,28 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    sf-mono = {
+      url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
+      flake = false;
+    };
   };
 
-  outputs = { home-manager, darwin, nix-homebrew, ...}: 
+  outputs = { home-manager, darwin, nix-homebrew, nixpkgs, sf-mono, ...}: 
   let 
+    overlays = [
+      (final: prev: {
+        sf-mono-liga-bin = prev.stdenvNoCC.mkDerivation rec {
+          pname = "sf-mono-liga-bin";
+          version = "dev";
+          src = sf-mono;
+          dontConfigure = true;
+          installPhase = ''
+            mkdir -p $out/share/fonts/opentype
+            cp -R $src/*.otf $out/share/fonts/opentype/
+          '';
+        };
+      })
+    ];
     initModules = { host, user }: [
       (./. + "/hosts/${host}/configuration.nix")
       nix-homebrew.darwinModules.nix-homebrew
@@ -42,7 +60,7 @@
       system = "aarch64-darwin";
       modules = initModules { inherit user; host = "m1"; };
       specialArgs = {
-        inherit home-manager user;
+        inherit home-manager user overlays;
       };
     };
 

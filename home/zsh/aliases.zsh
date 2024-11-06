@@ -11,9 +11,9 @@ alias ll='ls -1Al --header --group-directories-first'
 alias h="history | tail -n 50"
 
 # Editors
-alias c="cursor ."
-alias s="subl ."
-alias v="nvim ."
+alias c="code"
+alias s="subl"
+alias v="nvim"
 
 # dbt
 alias dl="uv run dbt ls -s state:modified --resource-type model"
