@@ -24,6 +24,7 @@ with lib;
         _1password
         bat
         delta
+        devenv
         duckdb
         fzf
         gcc
@@ -100,3 +101,4 @@ with lib;
     };
   };
 }
+
