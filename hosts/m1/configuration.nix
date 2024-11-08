@@ -39,6 +39,11 @@
       cores = 0;
       max-jobs = 10;
       experimental-features = "nix-command flakes";
+      trusted-users = [
+        "root"
+        "@wheel"
+        user.unixname
+      ];
     };
   };
 
