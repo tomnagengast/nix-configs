@@ -50,7 +50,8 @@
       }
     ];
     user = {
-      unixname = builtins.baseNameOf (builtins.getEnv "HOME");
+      # unixname = builtins.getEnv "USER";
+      unixname = "tom";
       name = "Tom Nagengast";
       email = "tnagengast@gmail.com";
     };

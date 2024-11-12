@@ -31,15 +31,19 @@ with lib;
         gh
         git-recent
         gnupg
+        go
+        go-tools
+        gopls
         jq
         k9s
         lsd
         nil
         nodejs
         ripgrep
-        uv
         tmux
         tree
+        universal-ctags
+        uv
         (google-cloud-sdk.withExtraComponents [
           google-cloud-sdk.components.gke-gcloud-auth-plugin
         ])
@@ -47,10 +51,14 @@ with lib;
 
       sessionVariables = {
         EDITOR = "nvim";
+        GOPATH = "$HOME/go";
+        GOBIN = "$GOPATH/bin";
+        GO111MODULE = "on";
       };
 
       sessionPath = [
           "$HOME/bin"
+          "$GOPATH/bin"  # Add GOBIN to PATH
       ];
 
       file = {
@@ -58,6 +66,24 @@ with lib;
           source = ./scripts;
           recursive = true;
         };
+        ".golangci.yml" = {
+          text = ''
+            linters:
+              enable:
+                - gofmt
+                - golint
+                - govet
+                - errcheck
+                - staticcheck
+                - gosimple
+                - ineffassign
+              disable:
+                - deadcode  # Deprecated
+                - varcheck  # Deprecated
+            run:
+              deadline: 5m
+          '';
+        };  # Added missing closing brace here
       };
     };
 
@@ -90,7 +116,6 @@ with lib;
           aws.disabled = true;
           docker_context.disabled = true;
           gcloud.disabled = true;
-          # python.disabled = true;
           package.disabled = true;
         };
       };
@@ -101,4 +126,3 @@ with lib;
     };
   };
 }
-
