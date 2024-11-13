@@ -105,9 +105,13 @@
       persistent-apps = [
         "/System/Applications/Notes.app"
         "/Applications/1Password.app"
-        # "/Applications/Arc.app"
+        "/Applications/Arc.app"
+        "/Users/tom/Applications/Slack.app"
+        "/Applications/Notion.app"
         "/Applications/iTerm.app"
         "/Applications/Cursor.app"
+        "/Users/tom/Applications/DataGrip.app"
+        "/Applications/Claude.app"
       ];
       persistent-others = [
         "/Users/${user.unixname}/Documents"
