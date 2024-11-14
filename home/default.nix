@@ -44,6 +44,7 @@ with lib;
         tree
         universal-ctags
         uv
+        yarn
         (google-cloud-sdk.withExtraComponents [
           google-cloud-sdk.components.gke-gcloud-auth-plugin
         ])
