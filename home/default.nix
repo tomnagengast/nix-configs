@@ -31,9 +31,6 @@ with lib;
         gh
         git-recent
         gnupg
-        go
-        go-tools
-        gopls
         jq
         k9s
         lsd
@@ -52,14 +49,14 @@ with lib;
 
       sessionVariables = {
         EDITOR = "nvim";
-        GOPATH = "$HOME/go";
-        GOBIN = "$GOPATH/bin";
-        GO111MODULE = "on";
+        # GOPATH = "$HOME/go";
+        # GOBIN = "$GOPATH/bin";
+        # GO111MODULE = "on";
       };
 
       sessionPath = [
           "$HOME/bin"
-          "$GOPATH/bin"  # Add GOBIN to PATH
+          # "$GOPATH/bin"  # Add GOBIN to PATH
       ];
 
       file = {
@@ -67,24 +64,24 @@ with lib;
           source = ./scripts;
           recursive = true;
         };
-        ".golangci.yml" = {
-          text = ''
-            linters:
-              enable:
-                - gofmt
-                - golint
-                - govet
-                - errcheck
-                - staticcheck
-                - gosimple
-                - ineffassign
-              disable:
-                - deadcode  # Deprecated
-                - varcheck  # Deprecated
-            run:
-              deadline: 5m
-          '';
-        };  # Added missing closing brace here
+        # ".golangci.yml" = {
+        #   text = ''
+        #     linters:
+        #       enable:
+        #         - gofmt
+        #         - golint
+        #         - govet
+        #         - errcheck
+        #         - staticcheck
+        #         - gosimple
+        #         - ineffassign
+        #       disable:
+        #         - deadcode  # Deprecated
+        #         - varcheck  # Deprecated
+        #     run:
+        #       deadline: 5m
+        #   '';
+        # };
       };
     };
 
