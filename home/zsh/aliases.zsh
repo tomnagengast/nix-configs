@@ -55,6 +55,10 @@ alias gs="gss"
 alias gr="git recent -n 5"
 alias ggo="g go"
 
+# GCP
+alias impersonate="gcloud config set auth/impersonate_service_account" # $SERVICE_ACCOUNT_EMAIL
+alias unimpersonate="gcloud config unset auth/impersonate_service_account"
+
 # Utilities
 alias cleanpy="find . -type d -name '__pycache__' -exec rm -r {} +"
 alias cleands="find . -type f -name '*.DS_Store' -ls -delete"
@@ -62,6 +66,7 @@ alias cleanbak="find . -type f -name '*.bak' -ls -delete"
 alias cleanup="cleanpy && cleands && cleanbak"
 alias week='date +%V'
 alias localip="ipconfig getifaddr en0"
+alias publicip="curl -s https://ipv4.icanhazip.com"
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 alias path='echo -e ${PATH//:/\\n}'
