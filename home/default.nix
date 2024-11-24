@@ -25,6 +25,7 @@ with lib;
         bat
         delta
         devenv
+        direnv
         duckdb
         fzf
         gcc
