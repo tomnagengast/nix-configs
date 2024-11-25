@@ -32,6 +32,7 @@ with lib;
         gh
         git-recent
         gnupg
+        httpie
         jq
         k9s
         lsd
