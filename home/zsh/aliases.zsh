@@ -16,13 +16,13 @@ alias s="subl"
 alias v="nvim"
 
 # dbt
-alias dl="uv run dbt ls -s state:modified --resource-type model"
-alias dr="uv run dbt run -s state:modified"
-alias drm="uv run dbt run -s"
+# alias dl="uv run dbt ls -s state:modified --resource-type model"
+# alias dr="uv run dbt run -s state:modified"
+# alias drm="uv run dbt run -s"
 alias db="uv run dbt build -s state:modified"
 alias dbm="uv run dbt build -s"
-alias dt="uv run dbt test -m state:modified"
-alias dtm="uv run dbt test"
+# alias dt="uv run dbt test -m state:modified"
+# alias dtm="uv run dbt test"
 
 alias tf="terraform"
 

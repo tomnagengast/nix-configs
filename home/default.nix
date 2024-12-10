@@ -35,6 +35,7 @@ with lib;
         httpie
         jq
         k9s
+        kubernetes-helm-wrapped
         lsd
         nil
         nodejs
@@ -51,14 +52,10 @@ with lib;
 
       sessionVariables = {
         EDITOR = "nvim";
-        # GOPATH = "$HOME/go";
-        # GOBIN = "$GOPATH/bin";
-        # GO111MODULE = "on";
       };
 
       sessionPath = [
           "$HOME/bin"
-          # "$GOPATH/bin"  # Add GOBIN to PATH
       ];
 
       file = {
@@ -66,24 +63,6 @@ with lib;
           source = ./scripts;
           recursive = true;
         };
-        # ".golangci.yml" = {
-        #   text = ''
-        #     linters:
-        #       enable:
-        #         - gofmt
-        #         - golint
-        #         - govet
-        #         - errcheck
-        #         - staticcheck
-        #         - gosimple
-        #         - ineffassign
-        #       disable:
-        #         - deadcode  # Deprecated
-        #         - varcheck  # Deprecated
-        #     run:
-        #       deadline: 5m
-        #   '';
-        # };
       };
     };
 
