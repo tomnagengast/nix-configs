@@ -9,6 +9,8 @@
       # LazyVim
       lua-language-server
       stylua
+      # Go
+      gopls
       # Telescope
       ripgrep
     ];
@@ -19,6 +21,7 @@
       let
         plugins = with pkgs.vimPlugins; [
           barbecue-nvim
+          go-nvim
           harpoon
           lazy-nvim
           lsp-zero-nvim

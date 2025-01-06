@@ -51,7 +51,7 @@ alias wip="ga wip"
 alias wipp="wip && push"
 alias aye="git checkout"
 alias gl="glo"
-alias gs="gss"
+alias gg="gss"
 alias gr="git recent -n 5"
 alias ggo="g go"
 
@@ -70,3 +70,4 @@ alias publicip="curl -s https://ipv4.icanhazip.com"
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 alias path='echo -e ${PATH//:/\\n}'
+

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, lib, ... }: {
 
   xdg.configFile."1Password/ssh/agent.toml" = {
     source = ./agent.toml;
@@ -11,6 +11,7 @@
       userName = "tomnagengast";
       signing.key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB3FOfHxMK6gmUS+IAjVKt8ZuAO4nrZbi5HgXJfF0BTZ";
       signing.signByDefault = true;
+      ignores = lib.splitString "\n" (builtins.readFile ./gitignore_global);
 
       delta = {
         enable = true;
@@ -61,3 +62,4 @@
     };
   };
 }
+

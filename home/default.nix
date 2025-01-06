@@ -1,12 +1,12 @@
 { pkgs, lib, ... }:
 with lib;
 {
-  imports = [ 
+  imports = [
     ./git
     ./neovim
     ./zsh
   ];
-  
+
   options.props = {
     useNeovim = lib.mkEnableOption "neovim";
   };
@@ -32,10 +32,12 @@ with lib;
         gh
         git-recent
         gnupg
+        helmfile
         httpie
         jq
         k9s
-        kubernetes-helm-wrapped
+        (pkgs.wrapHelm pkgs.kubernetes-helm { plugins = [ pkgs.kubernetes-helmPlugins.helm-diff ]; })
+        kubectx
         lsd
         nil
         nodejs
@@ -98,7 +100,7 @@ with lib;
           package.disabled = true;
         };
       };
-        
+
       tmux = {
         enable = true;
       };
