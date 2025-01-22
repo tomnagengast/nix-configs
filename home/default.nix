@@ -23,6 +23,9 @@ with lib;
       packages = with pkgs; [
         _1password
         bat
+        bun
+        cargo
+        comma
         delta
         devenv
         direnv
@@ -31,6 +34,10 @@ with lib;
         gcc
         gh
         git-recent
+        go
+        gopls
+        golangci-lint
+        gotools
         gnupg
         helmfile
         httpie
@@ -41,14 +48,20 @@ with lib;
         lsd
         nil
         nodejs
+        nodePackages.npm
+        nodePackages_latest.prettier
+        openssl_3
         ripgrep
+        rustc
+        sqlite
         tmux
         tree
         universal-ctags
         uv
         yarn
         (google-cloud-sdk.withExtraComponents [
-          google-cloud-sdk.components.gke-gcloud-auth-plugin
+            google-cloud-sdk.components.gke-gcloud-auth-plugin
+            google-cloud-sdk.components.kubectl
         ])
       ];
 

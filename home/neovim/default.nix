@@ -11,6 +11,10 @@
       stylua
       # Go
       gopls
+      golangci-lint
+      gofumpt
+      gotools # includes goimports
+      delve  # for debugging
       # Telescope
       ripgrep
     ];
@@ -21,10 +25,10 @@
       let
         plugins = with pkgs.vimPlugins; [
           barbecue-nvim
-          go-nvim
           harpoon
           lazy-nvim
           lsp-zero-nvim
+          lua_ls
           lualine-nvim
           neoscroll-nvim
           nvim-autopairs

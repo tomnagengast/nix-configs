@@ -4,9 +4,18 @@ function mkd() {
 }
 
 # Copy the current working directory to the clipboard
-cpwd() (
+function cpwd() {
   pwd | tr / _
-)
+}
+
+function gs() {
+  # if the function is called with no arguments, run `gss`
+  if [ $# -eq 0 ]; then
+    git status --short
+  else
+    /opt/homebrew/bin/gs $@
+  fi
+}
 
 # function git() {
 #   # when checking out a branch, also write the git repo and the branch to ~/.gitbranches

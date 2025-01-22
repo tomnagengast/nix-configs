@@ -38,22 +38,25 @@ alias a="php artisan"
 alias fresh="php artisan migrate:fresh --seed"
 
 # Git
-alias clean-local-branches='git branch | grep -v "main" | xargs git branch -D'
-alias amend="git add -A && git commit --amend --no-edit"
-alias ga="git add -A && git commit -m"
-alias nah="git clean -df && git reset --hard"
-alias oops="git reset --soft HEAD~1"
 alias pull="git pull"
 alias push="git push"
-alias resolve="git add . && git commit --no-edit"
 alias unstage="git restore --staged ."
-alias wip="ga wip"
-alias wipp="wip && push"
-alias aye="git checkout"
-alias gl="glo"
-alias gg="gss"
+alias clean-local-branches='git branch | grep -v "main" | xargs git branch -D'
+## Git Recent
 alias gr="git recent -n 5"
-alias ggo="g go"
+## Git Spice
+# alias gp="/opt/homebrew/bin/gs"
+alias amend="gs commit amend --no-edit"
+alias gp="git commit --patch"
+alias ga="git add -A && gs commit create -m"
+alias wip="ga wip"
+alias wipp="wip && gs stack submit"
+alias nah="git clean -df && git reset --hard"
+alias oops="git reset --soft HEAD~1 && gs upstack restack"
+alias resolve="git add -A && gs commit create --no-edit"
+alias ggo="gs branch create --no-commit"
+alias aye="gs branch checkout"
+alias gl="gs log long"
 
 # GCP
 alias impersonate="gcloud config set auth/impersonate_service_account" # $SERVICE_ACCOUNT_EMAIL

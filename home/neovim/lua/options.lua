@@ -1,3 +1,7 @@
+-- Reserve a space in the gutter
+-- This will avoid an annoying layout shift in the screen
+vim.opt.signcolumn = 'yes'
+
 vim.opt.guicursor = "" -- disable cursor blink
 
 vim.opt.number = true -- set line numbers
@@ -60,4 +64,3 @@ vim.opt.guicursor = {
 
 -- views can only be fully collapsed with the global statusline
 vim.opt.laststatus = 3
-

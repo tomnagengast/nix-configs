@@ -21,6 +21,9 @@
       initExtra = ''
         ${builtins.readFile ./aliases.zsh}
         ${builtins.readFile ./functions.zsh}
+
+        eval "$(gs shell completion bash)"
+
         source ~/.zshenv
         export PATH=/opt/homebrew/bin:$PATH
         export DBT_PROFILES_DIR="$HOME/.config/dbt"
@@ -35,3 +38,4 @@
     };
   };
 }
+
