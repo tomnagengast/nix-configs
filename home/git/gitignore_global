@@ -37,7 +37,6 @@ ehthumbs.db
 Thumbs.db
 .idea
 .fleet
-.vscode
 .vagrant
 __pycache__
 
@@ -49,4 +48,3 @@ __pycache__
 #############################
 *.dev
 v_tmp
-
