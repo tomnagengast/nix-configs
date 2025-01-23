@@ -46,6 +46,7 @@ with lib;
         (pkgs.wrapHelm pkgs.kubernetes-helm { plugins = [ pkgs.kubernetes-helmPlugins.helm-diff ]; })
         kubectx
         lsd
+        netlify-cli
         nil
         nodejs
         nodePackages.npm
