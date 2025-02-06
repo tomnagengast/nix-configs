@@ -16,7 +16,7 @@
       ];
       oh-my-zsh = {
         enable = true;
-        plugins = ["git" "direnv"];
+        plugins = ["direnv"]; # "git"
       };
       initExtra = ''
         ${builtins.readFile ./aliases.zsh}

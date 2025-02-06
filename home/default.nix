@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, pkgs-unstable, lib, ... }:
 with lib;
 {
   imports = [
@@ -20,49 +20,50 @@ with lib;
     home = {
       stateVersion = "24.11";
 
-      packages = with pkgs; [
-        _1password
-        bat
-        bun
-        cargo
-        comma
-        delta
-        devenv
-        direnv
-        duckdb
-        fzf
-        gcc
-        gh
-        git-recent
-        go
-        gopls
-        golangci-lint
-        gotools
-        gnupg
-        helmfile
-        httpie
-        jq
-        k9s
+      packages = [
+        pkgs._1password
+        pkgs.bat
+        pkgs.bun
+        pkgs.cargo
+        pkgs.comma
+        pkgs.delta
+        pkgs-unstable.devenv
+        pkgs.direnv
+        pkgs.duckdb
+        pkgs.fzf
+        pkgs.gcc
+        pkgs.gh
+        pkgs.git-recent
+        pkgs.go
+        pkgs.gopls
+        pkgs.golangci-lint
+        pkgs.gotools
+        pkgs.gnupg
+        pkgs.helmfile
+        pkgs.httpie
+        pkgs.jq
+        pkgs.k9s
         (pkgs.wrapHelm pkgs.kubernetes-helm { plugins = [ pkgs.kubernetes-helmPlugins.helm-diff ]; })
-        kubectx
-        lsd
-        netlify-cli
-        nil
-        nodejs
-        nodePackages.npm
-        nodePackages_latest.prettier
-        openssl_3
-        ripgrep
-        rustc
-        sqlite
-        tmux
-        tree
-        universal-ctags
-        uv
-        yarn
-        (google-cloud-sdk.withExtraComponents [
-            google-cloud-sdk.components.gke-gcloud-auth-plugin
-            google-cloud-sdk.components.kubectl
+        pkgs.kubectx
+        pkgs.lsd
+        pkgs.netlify-cli
+        pkgs.nil
+        pkgs.nodejs
+        pkgs.nodePackages.npm
+        pkgs.nodePackages_latest.prettier
+        pkgs.openssl_3
+        pkgs.python314
+        pkgs.ripgrep
+        pkgs.rustc
+        pkgs.sqlite
+        pkgs.tmux
+        pkgs.tree
+        pkgs.universal-ctags
+        pkgs-unstable.uv
+        pkgs.yarn
+        (pkgs.google-cloud-sdk.withExtraComponents [
+            pkgs.google-cloud-sdk.components.gke-gcloud-auth-plugin
+            pkgs.google-cloud-sdk.components.kubectl
         ])
       ];
 

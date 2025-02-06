@@ -1,6 +1,7 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     darwin = {
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,8 +17,8 @@
     };
   };
 
-  outputs = { home-manager, darwin, nix-homebrew, nixpkgs, sf-mono, ...}: 
-  let 
+  outputs = { home-manager, darwin, nix-homebrew, nixpkgs, nixpkgs-unstable, sf-mono, ...}:
+  let
     overlays = [
       (final: prev: {
         sf-mono-liga-bin = prev.stdenvNoCC.mkDerivation rec {
@@ -46,6 +47,9 @@
         nixpkgs.config.allowUnfree = true;
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
+        home-manager.extraSpecialArgs = {
+          inherit pkgs-unstable;
+        };
         home-manager.users.${user.unixname} = import (./. + "/hosts/${host}/home.nix");
       }
     ];
@@ -55,7 +59,9 @@
       name = "Tom Nagengast";
       email = "tnagengast@gmail.com";
     };
-    
+    system = "aarch64-darwin";
+    pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
+
   in {
     darwinConfigurations.tom-m1 = darwin.lib.darwinSystem {
       system = "aarch64-darwin";

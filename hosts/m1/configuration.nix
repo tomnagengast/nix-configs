@@ -8,7 +8,7 @@
     ];
   };
 
-  
+
   homebrew = {
     # enable = true;
 
@@ -101,24 +101,26 @@
       launchanim = false;
       mineffect = "scale";
       minimize-to-application = false;
-      mru-spaces = false;
+      mru-spaces = true;
       persistent-apps = [
+        "/System/Applications/Utilities/Activity Monitor.app"
+        "/System/Applications/Music.app"
         "/System/Applications/Notes.app"
-        "/Applications/1Password.app"
-        "/Applications/Arc.app"
-        "/Users/tom/Applications/Slack.app"
-        "/Applications/Notion.app"
-        "/Applications/Linear.app"
+        "/System/Applications/Calendar.app"
+        "/Applications/Safari.app"
         "/Applications/iTerm.app"
         "/Applications/Cursor.app"
         "/Users/tom/Applications/DataGrip.app"
+        "/Users/tom/Applications/Slack.app"
+        "/Applications/Notion.app"
+        "/Applications/Linear.app"
         "/Applications/Claude.app"
-        "/System/Applications/Utilities/Activity Monitor.app"
+        "/Applications/1Password.app"
       ];
-      persistent-others = [
-        "/Users/${user.unixname}/Documents"
-        "/Users/${user.unixname}/Downloads"
-      ];
+      # persistent-others = [
+      #   "/Users/${user.unixname}/Documents"
+      #   "/Users/${user.unixname}/Downloads"
+      # ];
       show-recents = false;
       static-only = false;
       show-process-indicators = false;
@@ -150,6 +152,62 @@
 
   system.activationScripts.postActivation.text = ''
     ########################################
+    # Dock                                 #
+    ########################################
+
+    # Set stack view style to fan
+    defaults write com.apple.dock persistent-others -array '<dict>
+        <key>tile-data</key>
+        <dict>
+            <key>arrangement</key>
+            <integer>2</integer>
+            <key>displayas</key>
+            <integer>1</integer>
+            <key>file-data</key>
+            <dict>
+                <key>_CFURLString</key>
+                <string>file:///Users/${user.unixname}/Documents</string>
+                <key>_CFURLStringType</key>
+                <integer>15</integer>
+            </dict>
+            <key>file-type</key>
+            <integer>2</integer>
+            <key>showas</key>
+            <integer>1</integer>
+        </dict>
+        <key>tile-type</key>
+        <string>directory-tile</string>
+    </dict>'
+
+    ########################################
+    # Finder                               #
+    ########################################
+
+    # Finder: disable window animations and Get Info animations
+    defaults write com.apple.finder DisableAllAnimations -bool true #
+
+    # Avoid creating .DS_Store files on network or USB volumes
+    defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+    defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+    # Use list view in all Finder windows by default
+    # Four-letter codes for the other view modes: `icnv`, `clmv`, `glyv`
+    defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+    # Disable the warning before emptying the Trash
+    defaults write com.apple.finder WarnOnEmptyTrash -bool false
+
+    # Expand the following File Info panes:
+    # “General”, “Open with”, and “Sharing & Permissions”
+    defaults write com.apple.finder FXInfoPanesExpanded -dict \
+        General -bool true \
+        OpenWith -bool true \
+        Privileges -bool true
+
+    # Show the ~/Library folder
+    chflags nohidden ~/Library
+
+    ########################################
     # Energy saving                        #
     ########################################
     # Enable lid wakeup
@@ -169,34 +227,6 @@
     # 3: Copy RAM to disk so the system state can still be restored in case of a
     #    power failure.
     pmset -a hibernatemode 0
-
-    ########################################
-    # Finder                               #
-    ########################################
-  
-    # Finder: disable window animations and Get Info animations
-    defaults write com.apple.finder DisableAllAnimations -bool true #
-    
-    # Avoid creating .DS_Store files on network or USB volumes
-    defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-    defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
-
-    # Use list view in all Finder windows by default
-    # Four-letter codes for the other view modes: `icnv`, `clmv`, `glyv`
-    defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
-
-    # Disable the warning before emptying the Trash
-    defaults write com.apple.finder WarnOnEmptyTrash -bool false
-        
-    # Expand the following File Info panes:
-    # “General”, “Open with”, and “Sharing & Permissions”
-    defaults write com.apple.finder FXInfoPanesExpanded -dict \
-        General -bool true \
-        OpenWith -bool true \
-        Privileges -bool true
-
-    # Show the ~/Library folder
-    chflags nohidden ~/Library
 
     ########################################
     # Mac App Store                        #
